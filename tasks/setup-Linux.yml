@@ -1,5 +1,11 @@
 ---
 
+- name: Debian | Update apt cache
+  apt:
+    update_cache: yes
+  changed_when: false
+  when: ansible_os_family == "Debian"
+
 - name: Linux | Install package requirements
   package:
     name: "{{ item }}"

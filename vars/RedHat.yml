@@ -3,3 +3,4 @@
 
 package_requirements:
   - ruby
+  - which
