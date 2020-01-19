@@ -1,0 +1,5 @@
+---
+# Variable for RedHat system
+
+package_requirements:
+  - ruby
