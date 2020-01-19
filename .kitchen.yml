@@ -33,24 +33,8 @@ platforms:
     driver:
       image: diodonfrost/centos-7-ansible
       platform: centos
-  - name: centos-6
-    driver:
-      image: diodonfrost/centos-6-ansible
-      platform: centos
 
   # Fedora
-  - name: fedora-32
-    driver:
-      image: diodonfrost/fedora-32-ansible
-      platform: centos
-  - name: fedora-31
-    driver:
-      image: diodonfrost/fedora-31-ansible
-      platform: centos
-  - name: fedora-30
-    driver:
-      image: diodonfrost/fedora-30-ansible
-      platform: centos
   - name: fedora-29
     driver:
       image: diodonfrost/fedora-29-ansible
@@ -109,19 +93,11 @@ platforms:
     driver:
       image: diodonfrost/oraclelinux-7-ansible
       platform: centos
-  - name: oraclelinux-6
-    driver:
-      image: diodonfrost/oraclelinux-6-ansible
-      platform: centos
 
   # Amazonlinux
   - name: amazonlinux-2
     driver:
       image: diodonfrost/amazonlinux-2-ansible
-      platform: centos
-  - name: amazonlinux-1
-    driver:
-      image: diodonfrost/amazonlinux-1-ansible
       platform: centos
 
 # Define playbook to use

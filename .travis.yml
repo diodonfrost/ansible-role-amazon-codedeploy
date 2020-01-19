@@ -6,10 +6,6 @@ services:
 env:
   - distribution: centos-8
   - distribution: centos-7
-  - distribution: centos-6
-  - distribution: fedora-32
-  - distribution: fedora-31
-  - distribution: fedora-30
   - distribution: fedora-29
   - distribution: fedora-28
   - distribution: fedora-27
@@ -24,7 +20,6 @@ env:
   - distribution: debian-8
   - distribution: oraclelinux-8
   - distribution: oraclelinux-7
-  - distribution: oraclelinux-6
   - distribution: amazonlinux-2
   - distribution: amazonlinux-1
 

@@ -4,8 +4,6 @@
 # Define java version to use
 package_requirements: '{%- if ansible_distribution == "Ubuntu" and ansible_distribution_version == "14.04" -%}
                           ruby2.0
-                       {%- elif ansible_distribution == "Debian" -%}
-                          ["ruby", "which"]
                        {%- else -%}
                           ruby
                        {%- endif -%}'
