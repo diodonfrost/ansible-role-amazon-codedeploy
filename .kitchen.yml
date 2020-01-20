@@ -85,10 +85,6 @@ platforms:
       platform: debian
 
   # Oraclelinux
-  - name: oraclelinux-8
-    driver:
-      image: diodonfrost/oraclelinux-8-ansible
-      platform: centos
   - name: oraclelinux-7
     driver:
       image: diodonfrost/oraclelinux-7-ansible

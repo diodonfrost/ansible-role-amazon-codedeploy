@@ -18,7 +18,6 @@ env:
   - distribution: debian-10
   - distribution: debian-9
   - distribution: debian-8
-  - distribution: oraclelinux-8
   - distribution: oraclelinux-7
   - distribution: amazonlinux-2
   - distribution: amazonlinux-1
