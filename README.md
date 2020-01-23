@@ -1,38 +1,130 @@
-Role Name
-=========
+# ansible-role-amazon-codedeploy
 
-A brief description of the role goes here.
+[![Build Status](https://travis-ci.com/diodonfrost/ansible-role-amazon-codedeploy.svg?branch=master)](https://travis-ci.com/diodonfrost/ansible-role-amazon-codedeploy)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-diodonfrost.amazon_codedeploy-660198.svg)](https://galaxy.ansible.com/diodonfrost/amazon_codedeploy)
 
-Requirements
-------------
+This role provide a compliance for install amazon-ssm on your target host.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Requirements
 
-Role Variables
---------------
+This role was developed using Ansible 2.5 Backwards compatibility is not guaranteed.
+Use `ansible-galaxy install diodonfrost.amazon_codedeploy` to install the role on your system.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Supported platforms:
 
-Dependencies
-------------
+```yaml
+- name: EL
+  versions:
+    - 8
+    - 7
+- name: Fedora
+  versions:
+    - 29
+    - 28
+    - 27
+    - 26
+- name: Debian
+  versions:
+    - buster
+    - stretch
+    - jessie
+- name: Ubuntu
+  versions:
+    - disco dingo
+    - bionic
+    - xenial
+    - trusty
+- name: Amazon
+  versions:
+    - 2017.12
+    - 2016.03
+    - 2013.09
+```
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Role Variables
 
-Example Playbook
-----------------
+This role does not have a variable
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```yaml
+---
+# defaults file for ansible-role-amazon-codedeploy
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+# Aws region where to download CodeDeploy install script
+aws_region: eu-west-1
 
-License
--------
+# Complete url where to download CodeDeploy install script
+codedeploy_install_script_url: "https://aws-codedeploy-{{ aws_region }}.s3.{{ aws_region }}.amazonaws.com/latest/install"
 
-BSD
+```
 
-Author Information
-------------------
+## Dependencies
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+None
+
+## Example Playbook
+
+This is a sample playbook file for deploying the Ansible Galaxy 
+role in a localhost and installing latest amazon-ssm version.
+
+```yaml
+---
+- hosts: localhost
+  become: true
+  roles:
+    - role: diodonfrost.amazon_codedeploy
+```
+
+Change aws region where to download CodeDeploy install script
+```yaml
+---
+- hosts: localhost
+  become: true
+  roles:
+    - role: diodonfrost.amazon_codedeploy
+      vars:
+        aws_region: eu-west-3
+```
+
+## Local Testing
+
+The preferred way of locally testing the role is to use Docker. You will have to install Docker on your system.
+
+You can also use Docker and Virtualbox with Docker to run tests locally. You will have to install Virtualbox and Docker on your system. For all our tests we use test-kitchen.
+
+Next install test-kitchen:
+
+```shell
+# Install dependencies
+gem install bundler
+bundle install
+```
+
+### Testing with Docker
+
+```shell
+# List all tests with kitchen
+kitchen list
+
+# fast test on one machine
+kitchen test default-centos-8
+
+# test on all machines
+kitchen test
+
+# for development, create environment
+kitchen create default-centos-8
+
+# Apply ansible playbook
+kitchen converge default-centos-8
+
+# Apply inspec tests
+kitchen verify default-centos-8
+```
+
+## License
+
+Apache 2
+
+## Author Information
+
+This role was created in 2020 by diodonfrost.
