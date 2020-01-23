@@ -17,11 +17,11 @@
     url: "{{ codedeploy_install_script_url }}"
     dest: /tmp/codedeploy-install
     mode: '0750'
-  register: command_result
 
 - name: Linux | Install CodeDeploy
   command: /tmp/codedeploy-install auto
-  when: command_result.changed
+  args:
+    creates: /opt/codedeploy-agent/bin/codedeploy-agent
 
 - name: Linux | CodeDeploy service
   service:
