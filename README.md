@@ -55,6 +55,8 @@ aws_region: eu-west-1
 # Complete url where to download CodeDeploy install script
 codedeploy_install_script_url: "https://aws-codedeploy-{{ aws_region }}.s3.{{ aws_region }}.amazonaws.com/latest/install"
 
+codedeploy_install_script_dest: /tmp/codedeploy
+
 ```
 
 ## Dependencies
