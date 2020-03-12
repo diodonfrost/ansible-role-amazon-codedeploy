@@ -15,11 +15,11 @@
 - name: Linux | Download CodeDeploy
   get_url:
     url: "{{ codedeploy_install_script_url }}"
-    dest: /tmp/codedeploy-install
+    dest: "{{ codedeploy_install_script_dest }}"
     mode: '0750'
 
 - name: Linux | Install CodeDeploy
-  command: /tmp/codedeploy-install auto
+  command: "{{ codedeploy_install_script_dest }} auto"
   args:
     creates: /opt/codedeploy-agent/bin/codedeploy-agent
 
