@@ -10,7 +10,6 @@ env:
   - distribution: fedora-28
   - distribution: fedora-27
   - distribution: fedora-26
-  - distribution: ubuntu-20.04
   - distribution: ubuntu-18.04
   - distribution: ubuntu-16.04
   - distribution: ubuntu-14.04
