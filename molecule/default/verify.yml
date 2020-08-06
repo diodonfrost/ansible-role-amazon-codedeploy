@@ -1,0 +1,16 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: Linux | Codedeploy service should be started and enabled
+    service:
+      name: codedeploy-agent
+      state: started
+      enabled: yes
+    register: codedeploy_service_result
+
+  - name: Linux | Verify commands outputs
+    assert:
+      that:
+        - codedeploy_service_result.changed == false
+      success_msg: "All tests passed"
