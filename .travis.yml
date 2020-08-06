@@ -1,7 +1,11 @@
 ---
-dist: xenial
+dist: bionic
 services:
   - docker
+
+language: python
+python:
+  - "3.7"
 
 env:
   - distribution: centos-8
@@ -21,33 +25,13 @@ env:
   - distribution: amazonlinux-1
 
 before_install:
-  # Build docker container
-  - 'sudo docker pull diodonfrost/${distribution}-ansible:latest'
+  - 'docker pull diodonfrost/${distribution}-ansible:latest'
+
+install:
+  - pip install ansible==2.9.4 molecule==3.0.2 docker==4.2.2
 
 script:
-  - container_id=$(mktemp)
-
-  # Run container and mount ansible role with it
-  - 'sudo docker run --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /dev/fuse:/dev/fuse --volume="${PWD}":/etc/ansible/roles/ansible-role-amazon-codedeploy:ro diodonfrost/${distribution}-ansible:latest > "${container_id}"'
-
-  # Check syntax
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v /etc/ansible/roles/ansible-role-amazon-codedeploy/tests/test.yml --syntax-check'
-
-  # Run ansible playbook
-  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v /etc/ansible/roles/ansible-role-amazon-codedeploy/tests/test.yml'
-
-  # Test indempotence
-  - >
-    sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v /etc/ansible/roles/ansible-role-amazon-codedeploy/tests/test.yml
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-
-  # Test role
-  - 'inspec exec tests/inspec --chef-license accept-silent -t docker://$(cat ${container_id})'
-
-  # Delete container
-  - 'sudo docker rm -f "$(cat ${container_id})"'
+  - distribution=${distribution} molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
