@@ -92,38 +92,15 @@ Change aws region where to download CodeDeploy install script
 
 The preferred way of locally testing the role is to use Docker. You will have to install Docker on your system.
 
-You can also use Docker and Virtualbox with Docker to run tests locally. You will have to install Virtualbox and Docker on your system. For all our tests we use test-kitchen.
-
-Next install test-kitchen:
-
-```shell
-# Install dependencies
-gem install bundler
-bundle install
-```
-
 ### Testing with Docker
 
 ```shell
-# List all tests with kitchen
-kitchen list
+# Test role on CentOS 8
+distribution=centos-8 molecule test
 
-# fast test on one machine
-kitchen test default-centos-8
-
-# test on all machines
-kitchen test
-
-# for development, create environment
-kitchen create default-centos-8
-
-# Apply ansible playbook
-kitchen converge default-centos-8
-
-# Apply inspec tests
-kitchen verify default-centos-8
+# Test role on Ubuntu 16.04
+distribution=ubuntu-16.04 molecule test
 ```
-
 ## License
 
 Apache 2
