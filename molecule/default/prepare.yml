@@ -1,0 +1,29 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: RedHat | Install requirements
+      yum:
+        name: net-tools
+        update_cache: yes
+        state: present
+      when: ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
+    
+    - name: RedHat | Install requirements
+      apt:
+        name: net-tools
+        update_cache: yes
+        state: present
+      when: ansible_pkg_mgr == "apt"
+
+    - name: Linux | Set virtual interface for ec2 metadata
+      shell: ifconfig eth0:0 169.254.169.254 netmask 255.255.255.0
+
+    - name: Linux | Download ec2-metadata-mock script
+      get_url:
+        url: https://github.com/aws/amazon-ec2-metadata-mock/releases/download/v1.2.0/ec2-metadata-mock-linux-amd64
+        dest: /tmp/ec2-metadata-mock
+        mode: '0100'
+
+    - name: Linux | Mock ec2 metadata
+      shell: "nohup /tmp/ec2-metadata-mock -p 80 -n 169.254.169.254 >/dev/null 2>&1 &"
