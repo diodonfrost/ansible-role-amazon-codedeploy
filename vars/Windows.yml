@@ -1,0 +1,5 @@
+---
+# Variable for Windows system
+
+default_codedeploy_install_script_url: https://aws-codedeploy-eu-west-1.s3.amazonaws.com/latest/codedeploy-agent.msi
+default_codedeploy_install_script_dest: '{{ ansible_env.TEMP }}\codedeploy-agent.msi'

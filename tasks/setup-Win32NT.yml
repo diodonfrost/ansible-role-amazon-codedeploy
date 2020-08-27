@@ -1,0 +1,18 @@
+---
+- name: Windows | Download CodeDeploy agent
+  win_get_url:
+    url: "{{ codedeploy_install_script_url }}"
+    dest: "{{ codedeploy_install_script_dest }}"
+
+- name: Windows | Install CodeDeploy agent
+  win_package:
+    path: "{{ codedeploy_install_script_dest }}"
+    product_id: '{8ACF5467-6486-4389-893B-A1EE29B3B1CC}'
+    arguments:
+      - /quiet
+
+- name: Windows | CodeDeploy agent service
+  win_service:
+    name: codedeployagent
+    start_mode: auto
+    state: started
