@@ -1,0 +1,17 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: Windows | Codedeploy service should be started and enabled
+    win_service:
+      name: codedeployagent
+      start_mode: auto
+      state: started
+    ignore_errors: yes
+    register: codedeploy_service_result
+
+  - name: Windows | Verify commands outputs
+    assert:
+      that:
+        - codedeploy_service_result.changed == false
+      success_msg: "All tests passed"
