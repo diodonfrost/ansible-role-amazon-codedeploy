@@ -8,7 +8,7 @@
         update_cache: yes
         state: present
       when: ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
-    
+
     - name: RedHat | Install requirements
       apt:
         name: net-tools
@@ -16,7 +16,7 @@
         state: present
       when: ansible_pkg_mgr == "apt"
 
-    - name: Linux | Set virtual interface for ec2 metadata
+    - name: Linux | Set virtual interface for ec2 metadata  # noqa 305
       shell: ifconfig eth0:0 169.254.169.254 netmask 255.255.255.0
 
     - name: Linux | Download ec2-metadata-mock script

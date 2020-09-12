@@ -2,4 +2,5 @@
 - name: Converge
   hosts: all
   tasks:
-    - win_shell: echo "nothing to do"
+    - name: Windows | nothing to do
+      win_shell: echo "nothing to do"

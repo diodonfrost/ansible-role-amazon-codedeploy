@@ -1,5 +1,4 @@
 ---
-
 - name: Debian | Update apt cache
   apt:
     update_cache: yes

@@ -12,5 +12,5 @@
   - name: Linux | Verify commands outputs
     assert:
       that:
-        - codedeploy_service_result.changed == false
+        - not codedeploy_service_result.changed
       success_msg: "All tests passed"

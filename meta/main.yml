@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: amazon-codedeploy
+  role_name: amazon_codedeploy
   author: diodonfrost
   company: diodonfrost
   description: Ansible role for manage AWS CodeDeploy agent
