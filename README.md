@@ -1,7 +1,6 @@
 # ansible-role-amazon-codedeploy
 
-[![Build Status](https://travis-ci.com/diodonfrost/ansible-role-amazon-codedeploy.svg?branch=master)](https://travis-ci.com/diodonfrost/ansible-role-amazon-codedeploy)
-[![CI](https://github.com/diodonfrost/ansible-role-amazon-codedeploy/workflows/CI/badge.svg)](https://github.com/diodonfrost/ansible-role-amazon-codedeploy/actions)
+[![molecule](https://github.com/diodonfrost/ansible-role-amazon-codedeploy/workflows/molecule/badge.svg)](https://github.com/diodonfrost/ansible-role-amazon-codedeploy/actions)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-diodonfrost.amazon_codedeploy-660198.svg)](https://galaxy.ansible.com/diodonfrost/amazon_codedeploy)
 
 This role provide a compliance for install amazon-ssm on your target host.
