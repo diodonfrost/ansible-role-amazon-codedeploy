@@ -8,30 +8,30 @@ python:
   - "3.7"
 
 env:
-  - distribution: centos-8
-  - distribution: centos-7
-  - distribution: fedora-29
-  - distribution: fedora-28
-  - distribution: fedora-27
-  - distribution: fedora-26
-  - distribution: ubuntu-18.04
-  - distribution: ubuntu-16.04
-  - distribution: ubuntu-14.04
-  - distribution: debian-10
-  - distribution: debian-9
-  - distribution: debian-8
-  - distribution: oraclelinux-7
-  - distribution: amazonlinux-2
-  - distribution: amazonlinux-1
+  - image: ansible-centos:8
+  - image: ansible-centos:7
+  - image: ansible-fedora:29
+  - image: ansible-fedora:28
+  - image: ansible-fedora:27
+  - image: ansible-fedora:26
+  - image: ansible-ubuntu:18.04
+  - image: ansible-ubuntu:16.04
+  - image: ansible-ubuntu:14.04
+  - image: ansible-debian:10
+  - image: ansible-debian:9
+  - image: ansible-debian:8
+  - image: ansible-oraclelinux:7
+  - image: ansible-amazonlinux:2
+  - image: ansible-amazonlinux:1
 
 before_install:
-  - 'docker pull diodonfrost/${distribution}-ansible:latest'
+  - 'docker pull diodonfrost/${image}'
 
 install:
   - pip install -r requirements.txt
 
 script:
-  - distribution=${distribution} molecule test
+  - image=${image} molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
