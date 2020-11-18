@@ -89,17 +89,36 @@ Change aws region where to download CodeDeploy install script
 
 ## Local Testing
 
-The preferred way of locally testing the role is to use Docker. You will have to install Docker on your system.
+This project uses [Molecule](http://molecule.readthedocs.io/) to aid in the
+development and testing.
+
+To develop or test you'll need to have installed the following:
+
+* Linux (e.g. [Ubuntu](http://www.ubuntu.com/))
+* [Docker](https://www.docker.com/)
+* [Python](https://www.python.org/) (including python-pip)
+* [Ansible](https://www.ansible.com/)
+* [Molecule](http://molecule.readthedocs.io/)
+* [Virtualbox](https://www.virtualbox.org/) (windows test only)
+* [Vagrant](https://www.vagrantup.com/downloads.html) (windows test only)
 
 ### Testing with Docker
 
 ```shell
 # Test role on CentOS 8
-distribution=centos-8 molecule test
+image=ansible-centos:8 molecule test
 
 # Test role on Ubuntu 16.04
-distribution=ubuntu-16.04 molecule test
+image=ansible-ubuntu:16.04 molecule test
 ```
+
+### Testing with Virtualbox
+
+```shell
+# Test role on Windows
+molecule test -s windows
+```
+
 ## License
 
 Apache 2
