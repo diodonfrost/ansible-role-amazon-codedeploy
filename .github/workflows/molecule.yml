@@ -47,3 +47,8 @@ jobs:
         run: molecule test
         env:
           image: ${{ matrix.image }}
+
+      - name: Test Ansible role with check_mode enable
+        run: molecule check
+        env:
+          image: ${{ matrix.image }}
