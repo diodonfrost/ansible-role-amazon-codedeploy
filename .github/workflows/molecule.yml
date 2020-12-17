@@ -25,7 +25,6 @@ jobs:
           - ansible-ubuntu:14.04
           - ansible-debian:10
           - ansible-debian:9
-          - ansible-debian:8
           - ansible-oraclelinux:7
           - ansible-amazonlinux:2
           - ansible-amazonlinux:1
@@ -42,8 +41,9 @@ jobs:
       - name: Install Molecule
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install ansible ansible-lint molecule-docker docker
 
       - name: Test Ansible role
-        run: |
-          image=${{ matrix.image }} molecule test
+        run: molecule test
+        env:
+          image: ${{ matrix.image }}
