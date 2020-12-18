@@ -25,6 +25,7 @@ jobs:
           - ansible-ubuntu:14.04
           - ansible-debian:10
           - ansible-debian:9
+          - ansible-oraclelinux:8
           - ansible-oraclelinux:7
           - ansible-amazonlinux:2
           - ansible-amazonlinux:1
