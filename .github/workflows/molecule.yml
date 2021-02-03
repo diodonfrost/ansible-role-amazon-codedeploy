@@ -22,7 +22,6 @@ jobs:
           - ansible-fedora:26
           - ansible-ubuntu:18.04
           - ansible-ubuntu:16.04
-          - ansible-ubuntu:14.04
           - ansible-debian:10
           - ansible-debian:9
           - ansible-oraclelinux:8
